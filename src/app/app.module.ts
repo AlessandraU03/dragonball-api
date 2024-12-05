@@ -7,17 +7,21 @@ import { CardPersonajeComponent } from './card-personaje/card-personaje.componen
 import { HttpClientModule } from '@angular/common/http';
 import { PlanetModalComponent } from './planet-modal/planet-modal.component';
 import { TransformationsModalComponent } from './transformations-modal/transformations-modal.component';
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
     CardPersonajeComponent,
     PlanetModalComponent,
-    TransformationsModalComponent
+    TransformationsModalComponent,
+    ModalEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

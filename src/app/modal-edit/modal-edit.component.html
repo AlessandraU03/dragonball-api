@@ -1,0 +1,40 @@
+<div *ngIf="character" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded shadow-md w-1/3">
+    <h2 class="text-xl font-bold mb-4">Modificar Ki de {{ character.name }}</h2>
+
+    <div class="mb-4">
+      <label class="block text-sm">Descripción:</label>
+      <p class="text-gray-700">{{ character.description | slice:0:50 }}...</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm">Ki:</label>
+      <input
+        type="number"
+        [(ngModel)]="character.ki"
+        class="mt-1 p-2 border rounded w-full"
+        placeholder="Nuevo valor de Ki"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm">Raza:</label>
+      <p class="text-gray-700">{{ character.race }}</p>
+    </div>
+
+    <div class="flex justify-between">
+      <button
+        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        (click)="onCloseModal()"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        (click)="onSaveKi()"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
