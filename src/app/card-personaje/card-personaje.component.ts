@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../services/character.service';
+
 @Component({
   selector: 'app-card-personaje',
   templateUrl: './card-personaje.component.html',

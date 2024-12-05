@@ -10,7 +10,32 @@
         <h3 class="text-lg semi-font-bold">{{ character.gender}}</h3>
         <h3 class="text-lg semi-font-bold">{{ character.affiliation}}</h3>
 
-      
+        <button
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mr-2"
+          (click)="openPlanetModal(character.id)"
+        >
+          Ver planeta
+        </button>
+
+        <button
+          class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          (click)="openTransformationsModal(character.id)"
+        >
+          Ver transformaciones
+        </button>
       </div>
     </div>
   </div>
+  
+  <app-planet-modal
+    *ngIf="selectedCharacterId"
+    [characterId]="selectedCharacterId"
+    (closeModal)="closePlanetModal()"
+  ></app-planet-modal>
+
+  <app-transformations-modal
+    *ngIf="selectedForTransformations"
+    [characterId]="selectedForTransformations"
+    (closeModal)="closeTransformationsModal()"
+  ></app-transformations-modal>
+  
