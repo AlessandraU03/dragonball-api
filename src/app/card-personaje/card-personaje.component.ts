@@ -22,6 +22,14 @@ export class CardPersonajeComponent implements OnInit {
     this.characterService.getAllCharacters().subscribe(
       (response: any) => {
         this.characters = response.items;
+
+        // Cargar el valor de KI desde localStorage si existe
+        this.characters.forEach((character) => {
+          const storedKi = localStorage.getItem(`ki_${character.id}`);
+          if (storedKi) {
+            character.ki = parseInt(storedKi, 10); // Recuperamos y aplicamos el valor de KI desde localStorage
+          }
+        });
       },
       (error) => {
         console.error('Error al cargar personajes:', error);
@@ -64,6 +72,8 @@ export class CardPersonajeComponent implements OnInit {
       );
       if (index !== -1) {
         this.characters[index].ki = newKi; // Actualizamos el valor de ki
+        // Guardamos el nuevo valor de ki en localStorage
+        localStorage.setItem(`ki_${this.characters[index].id}`, newKi.toString());
       }
     }
     this.closeEditKiModal();
