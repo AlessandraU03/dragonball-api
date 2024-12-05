@@ -1,0 +1,16 @@
+<div *ngFor="let character of characters" class="p-4 bg-gray-100 rounded shadow-md mb-4">
+    <div class="flex items-center">
+      <img [src]="character.image" alt="{{ character.name }}" class="w-16 h-16 rounded-full mr-4" />
+      <div>
+        <h1 class="text-lg font-bold">{{ character.name }}</h1>
+        <h3 class="text-lg semi-font-bold">{{ character.description}}</h3>
+        <h3 class="text-lg semi-font-bold">{{ character.ki}}</h3>
+        <h3 class="text-lg semi-font-bold">{{ character.masKi}}</h3>
+        <h3 class="text-lg semi-font-bold">{{ character.race}}</h3>
+        <h3 class="text-lg semi-font-bold">{{ character.gender}}</h3>
+        <h3 class="text-lg semi-font-bold">{{ character.affiliation}}</h3>
+
+      
+      </div>
+    </div>
+  </div>
