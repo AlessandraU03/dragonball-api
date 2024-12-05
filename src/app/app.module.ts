@@ -15,7 +15,7 @@ import {FormsModule} from "@angular/forms";
     CardPersonajeComponent,
     PlanetModalComponent,
     TransformationsModalComponent,
-    ModalEditComponent
+    ModalEditComponent,
   ],
   imports: [
     BrowserModule,

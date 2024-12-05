@@ -1,40 +1,51 @@
-<div *ngFor="let character of characters" class="p-4 bg-gray-100 rounded shadow-md mb-4">
-  <div class="flex items-center">
-    <img [src]="character.image" alt="{{ character.name }}" class="w-16 h-16 rounded-full mr-4" />
-    <div>
-      <h1 class="text-lg font-bold">{{ character.name }}</h1>
-      <h3 class="text-lg semi-font-bold">{{ character.description}}</h3>
-      <h3 class="text-lg semi-font-bold">{{ character.ki}}</h3>
-      <h3 class="text-lg semi-font-bold">{{ character.masKi}}</h3>
-      <h3 class="text-lg semi-font-bold">{{ character.race}}</h3>
-      <h3 class="text-lg semi-font-bold">{{ character.gender}}</h3>
-      <h3 class="text-lg semi-font-bold">{{ character.affiliation}}</h3>
+<div class="grid grid-cols-3 gap-6">
+  <div *ngFor="let character of characters" class="p-4">
+    <div class="w-[424px] h-[462px] bg-[#3c3e44] rounded-[23px] flex flex-col items-center shadow-lg">
+      <!-- Imagen del personaje -->
+      <div class="w-[px]  bg-white rounded-md overflow-hidden mt-6">
+        <img [src]="character.image" alt="{{ character.name }}" class="w-full h-full object-cover" />
+      </div>
 
-      <button
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mr-2"
-        (click)="openPlanetModal(character.id)"
-      >
-        Ver planeta
-      </button>
+      <!-- Nombre del personaje -->
+      <div class="mt-4 text-[#fbc02d] text-2xl font-normal font-['Inter'] text-center">
+        {{ character.name }}
+      </div>
 
-      <button
-        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        (click)="openTransformationsModal(character.id)"
-      >
-        Ver transformaciones
-      </button>
+      <!-- Descripción -->
+      <div class="mt-4 px-6 text-justify text-white text-sm font-normal font-['Inter'] leading-5 h-[169px] overflow-hidden">
+        {{ character.description }}
+      </div>
 
-      <button
-        class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 mt-2 ml-3"
-        (click)="openEditKiModal(character)"
-      >
-        Modificar Ki
-      </button>
+      <!-- Botones -->
+      <div class="mt-4 flex justify-between gap-2" style="margin-bottom: 16px;">
+        <!-- Botón Ver Planeta -->
+        <button
+          class="w-[104px] py-2 bg-[#fedc08] rounded-md text-black text-xs font-normal font-['Inter'] cursor-pointer hover:bg-[#f3c208]"
+          (click)="openPlanetModal(character.id)"
+        >
+          Ver planeta
+        </button>
 
+        <button
+          class="w-[104px] py-2 bg-[#FC6D0B] rounded-md text-white text-xs font-normal font-['Inter'] cursor-pointer hover:bg-[#ff802b]"
+          (click)="openTransformationsModal(character.id)"
+        >
+          Ver transformaciones
+        </button>
+
+        <!-- Botón Modificar Ki -->
+        <button
+          class="w-[104px] py-2 bg-[#ff1f37] rounded-md text-white text-xs font-normal font-['Inter'] cursor-pointer hover:bg-[#e01c32]"
+          (click)="openEditKiModal(character)"
+        >
+          Modificar Ki
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Modales -->
 <app-planet-modal
   *ngIf="selectedCharacterId"
   [characterId]="selectedCharacterId"
@@ -47,7 +58,6 @@
   (closeModal)="closeTransformationsModal()"
 ></app-transformations-modal>
 
-<!-- Modal para editar Ki -->
 <app-modal-edit
   *ngIf="editingKiCharacter"
   [character]="editingKiCharacter"
