@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardPersonajeComponent } from './card-personaje/card-personaje.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlanetModalComponent } from './planet-modal/planet-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CardPersonajeComponent
+    CardPersonajeComponent,
+    PlanetModalComponent
   ],
   imports: [
     BrowserModule,
