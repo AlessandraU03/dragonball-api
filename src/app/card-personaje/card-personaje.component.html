@@ -1,21 +1,31 @@
 <div class="grid grid-cols-3 gap-6">
   <div *ngFor="let character of characters" class="p-4">
-    <div class="w-[424px] h-[462px] bg-[#3c3e44] rounded-[23px] flex flex-col items-center shadow-lg">
+    <div class="w-[424px] h-[600px] bg-[#3c3e44] rounded-[23px] flex flex-col items-center shadow-lg">
 
-      <div class="w-[px]  bg-white rounded-md overflow-hidden mt-6">
-        <img [src]="character.image" alt="{{ character.name }}" class="w-full h-full object-cover" />
+      <div class="w-[px] bg-white rounded-md overflow-hidden mt-6">
+        <img [src]="character.image" alt="{{ character.name }}" class="w-full h-full object-cover" style="margin-top: 10px; height: 250px;" />
       </div>
 
       <div class="mt-4 text-[#fbc02d] text-2xl font-normal font-['Inter'] text-center">
         {{ character.name }}
       </div>
 
-      <div class="mt-4 px-6 text-justify text-white text-sm font-normal font-['Inter'] leading-5 h-[169px] overflow-hidden">
+      <!-- Mostrar información adicional -->
+      <div class="mt-2 text-white text-lg font-medium font-['Inter'] text-center">
+        Ki: {{ character.ki || 'N/A' }} / {{ character.maxKi || 'N/A' }}
+      </div>
+      <div class="mt-2 text-white text-sm font-normal font-['Inter'] text-center">
+        <p>Afiliación: {{ character.affiliation || 'Desconocida' }}</p>
+        <p>Género: {{ character.gender || 'Desconocido' }}</p>
+        <p>Raza: {{ character.race || 'Desconocida' }}</p>
+      </div>
+
+      <!-- Descripción con desplazamiento si es necesario -->
+      <div class="mt-4 px-6 text-justify text-white text-sm font-normal font-['Inter'] leading-5 h-[169px] overflow-auto">
         {{ character.description }}
       </div>
 
       <div class="mt-4 flex justify-between gap-2" style="margin-bottom: 16px;">
-       
         <button
           class="w-[104px] py-2 bg-[#fedc08] rounded-md text-black text-xs font-normal font-['Inter'] cursor-pointer hover:bg-[#f3c208]"
           (click)="openPlanetModal(character.id)"
@@ -40,6 +50,7 @@
     </div>
   </div>
 </div>
+
 
 <app-planet-modal
   *ngIf="selectedCharacterId"

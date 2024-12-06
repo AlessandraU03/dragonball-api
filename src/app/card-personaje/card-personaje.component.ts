@@ -23,12 +23,19 @@ export class CardPersonajeComponent implements OnInit {
       (response: any) => {
         this.characters = response.items;
 
-        // Cargar el valor de KI desde localStorage si existe
+        // Cargar valores adicionales y gestionar defaults
         this.characters.forEach((character) => {
+          // Cargar Ki desde localStorage si existe
           const storedKi = localStorage.getItem(`ki_${character.id}`);
           if (storedKi) {
-            character.ki = parseInt(storedKi, 10); // Recuperamos y aplicamos el valor de KI desde localStorage
+            character.ki = parseInt(storedKi, 10);
           }
+
+          // Asignar valores predeterminados si no están disponibles
+          character.maxKi = character.maxKi || 'N/A';
+          character.affiliation = character.affiliation || 'Desconocida';
+          character.gender = character.gender || 'Desconocido';
+          character.race = character.race || 'Desconocida';
         });
       },
       (error) => {
@@ -71,8 +78,8 @@ export class CardPersonajeComponent implements OnInit {
         (character) => character.id === this.editingKiCharacter.id
       );
       if (index !== -1) {
-        this.characters[index].ki = newKi; // Actualizamos el valor de ki
-        // Guardamos el nuevo valor de ki en localStorage
+        this.characters[index].ki = newKi; // Actualizamos el valor de Ki
+        // Guardamos el nuevo valor de Ki en localStorage
         localStorage.setItem(`ki_${this.characters[index].id}`, newKi.toString());
       }
     }
